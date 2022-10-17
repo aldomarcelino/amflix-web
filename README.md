@@ -1,7 +1,7 @@
 # P3-Challenge-1
 
 - Tema Aplikasi: Movies
-- CSS Framework: ...
+- CSS Framework: Netflix
 
 Struktur Folder:
 

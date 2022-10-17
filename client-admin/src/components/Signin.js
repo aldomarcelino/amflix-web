@@ -37,12 +37,22 @@ function Signin() {
             type="password"
             placeholder="******************"
           />
+          <label for="remember" className="flex items-center w-1/2">
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              className="mr-1 bg-white shadow"
+            />
+            <span className="text-sm text-gray-700 pt-1">Show Password</span>
+          </label>
         </div>
         <div className="flex flex-col justify-items-start">
+          <button className="shadow appearance-none border rounded w-80 py-2 px-3 text-grey-darker mb-3 bg-red font-bold text-stone-50">
+            Sign In
+          </button>
           <button>
-            <p className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker">
-              Forgot Password?
-            </p>
+            <p className="font-bold text-sm text-blue-500">Forgot Password?</p>
           </button>
         </div>
       </div>
