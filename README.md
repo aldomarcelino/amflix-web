@@ -1,6 +1,6 @@
 # P3-Challenge-1
 
-- Tema Aplikasi: ...
+- Tema Aplikasi: Movies
 - CSS Framework: ...
 
 Struktur Folder:

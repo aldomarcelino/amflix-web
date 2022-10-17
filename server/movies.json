@@ -1,0 +1,113 @@
+{
+  "movies":[
+    {
+      "id": 1,
+      "title": "Forecasting Love & Weather",
+      "slug":"something",
+      "synopsis":"Something",
+      "trailerUrl":"something",
+      "rating":10,
+      "genreId":1,
+      "authorId":1,
+      "createdAt":"now",
+      "updatedAt":"now",
+      "imgUrl": "https://occ-0-2008-64.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABdVPaTfV5ngbE3N4r7qlLLdpFvO3_YtOL2I7GsViFWzOyRhfzAvHCwXPVFAIVtfnCooZqhJN9XGCVuckx6uEPwzsnh70vc_mYSZU6fiKqZF7kuypyE5rMy-oicaS2NCtYGc5IR-9i24RSGdRj9weRQrj7e9QUg.jpg?r=da7"
+    },
+    {
+      "id": 2,
+      "title": "Twenty Five Twenty One",
+      "slug":"something",
+      "synopsis":"Something",
+      "trailerUrl":"something",
+      "rating":10,
+      "genreId":1,
+      "authorId":1,
+      "createdAt":"now",
+      "updatedAt":"now",
+      "imgUrl": "https://occ-0-2008-64.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABfAugYwh4gtZNeD9HRAz2RWrHnwNfK5hfd0ZT18Fie-_imKHct7NiAGLqokNjdCCq3IC090InGkJNB357-gkfgsm7PR4QCLA5xBjwnkS4o5UfSsUI9lx9WTwBbV51Uruh7flSPLowI2cODUB0y_Ofs2C8yw89A.jpg?r=9c1"
+    },
+    {
+      "id": 3,
+      "title": "Manifest",
+      "slug":"something",
+      "synopsis":"Something",
+      "trailerUrl":"something",
+      "rating":10,
+      "genreId":1,
+      "authorId":1,
+      "createdAt":"now",
+      "updatedAt":"now",
+      "imgUrl": "https://occ-0-2008-64.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABRUoECB-wZqdXFVwGAy8XkjZYO-kSeyYtEF3NJ2jCz0KIUNO-FeL8cxOcwUdZgLXD1iYeYzG24BjFCmyzavGeT2Z8fTRDMnAlsC6MsGkYHhPFkgFtKMS4HHJk1crgK0qSCsqW3PRxjc278gjRceSd3vfYe8.webp?r=9e9"
+    },
+    {
+      "id": 4,
+      "title": "Money Heist",
+      "slug":"something",
+      "synopsis":"Something",
+      "trailerUrl":"something",
+      "rating":10,
+      "genreId":1,
+      "authorId":1,
+      "createdAt":"now",
+      "updatedAt":"now",
+      "imgUrl": "https://occ-0-2008-64.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABTsgaH6IuTB_1odl8YTLhTSJKjkITuUvV94gYEiieopwZGaDiGCCJPUUCnhBZ-qCG5XF3bx0xUkg8A36es7AE8v5eGOv4QFh95ITHU44RYi7UDXA_BN2V4vBbJAm.jpg?r=326"
+    },
+    {
+      "id": 5,
+      "title": "The Tinder Swindler",
+      "slug":"something",
+      "synopsis":"Something",
+      "trailerUrl":"something",
+      "rating":10,
+      "genreId":1,
+      "authorId":1,
+      "createdAt":"now",
+      "updatedAt":"now",
+      "imgUrl": "https://occ-0-2008-64.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABTGKYAWAU_zc3C-zZUfs9NOsDMORi-7RkpCRwfutxjenZ1pvHD4Pln3BnPmQvKoWjnvdaooCl8ajhiAmaKSD6pWpOcVyA0luZzZx94mBq4iB71mRqceJJX7jReCh2vVUrq8ZbVD_lgytURZU7-eibq6wSXUMmOstHzMCOgdAXgPQCuZV-85uTjo.jpg?r=ca0"
+    },
+    {
+      "id": 6,
+      "title": "All Of Us Are Dead",
+      "slug":"something",
+      "synopsis":"Something",
+      "trailerUrl":"something",
+      "rating":10,
+      "genreId":1,
+      "authorId":1,
+      "createdAt":"now",
+      "updatedAt":"now",
+      "imgUrl": "https://occ-0-2008-64.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABcHa1-msZKoMsa7bA7osZRodRsmAZLXkoxfVn5Fekxsyo5yF1hnTnmrOWTMVrnGTuo7ZQdmXhRZJGYCx40_wHrzbVHc5n-JRLDxXqPxC9DEMPKCV2qMxaemIbcJRR3GkFllYNjdDzgx5F7pGGF1mKMY8JvuffL2VhwyzpZSeGGoGtx4KnvbHqu0.jpg?r=891"
+    },
+    {
+      "id": 7,
+      "title": "Squid Game",
+      "slug":"something",
+      "synopsis":"Something",
+      "trailerUrl":"something",
+      "rating":10,
+      "genreId":1,
+      "authorId":1,
+      "createdAt":"now",
+      "updatedAt":"now",
+      "imgUrl": "https://occ-0-2008-64.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABb-9MU3J1eHn0BwYOKnRuZ2HugvSXqdiL_HGM8tBXEvokxkyJvsFnXbS0JYSxEpPg2mMhut8anqRiI1tY9WzqAn3Vrjhjg0OFe861x0s8euWZp6PbijiFrswqT5T.jpg?r=c47"
+    }
+  ],
+  "genre":[
+    {
+      "id":1,
+      "name":"Action",
+      "createdAt":"now",
+      "updatedAt":"now"
+    }
+  ],
+  "casts":[
+    {
+      "id":1,
+      "movieId":1,
+      "name":"Action",
+      "profilePict":"wwwww",
+      "createdAt":"now",
+      "updatedAt":"now"
+    }
+  ]
+}
