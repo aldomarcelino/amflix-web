@@ -30,7 +30,10 @@ export default function Genre() {
             </div>
           </div>
           <div className="block w-full overflow-x-auto">
-            <Table status={"genre"} />
+            <Table
+              status={"genre"}
+              head={["no", "name", "createdat", "updatedat", "ACTIONS"]}
+            />
           </div>
         </div>
       </div>

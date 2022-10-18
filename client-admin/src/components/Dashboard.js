@@ -30,7 +30,19 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="block w-full overflow-x-auto">
-            <Table status={"dashboard"}/>
+            <Table
+              status={"dashboard"}
+              head={[
+                "NO",
+                "NAME",
+                "GENRE",
+                "RATING",
+                "CREATED BY",
+                "MAIN IMAGE",
+                "IMAGES",
+                "ACTIONS",
+              ]}
+            />
           </div>
         </div>
       </div>
