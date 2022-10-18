@@ -1,6 +1,6 @@
 import Table from "./Table";
 
-export default function Dashboard() {
+export default function Genre() {
   return (
     <>
       <div className="w-full xl:w-8/12  px-4 mx-auto ml-96 mt-4 mb-20">
@@ -9,7 +9,7 @@ export default function Dashboard() {
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-4 max-w-full flex-grow flex-1">
                 <h3 className="font-semibold text-base text-blueGray-700">
-                  Movie List
+                  Genre List
                 </h3>
               </div>
               <div className="px-4">
@@ -24,13 +24,13 @@ export default function Dashboard() {
                   >
                     <path d="M12 4.5v15m7.5-7.5h-15" />
                   </svg>
-                  Create Movie
+                  Create Genre
                 </button>
               </div>
             </div>
           </div>
           <div className="block w-full overflow-x-auto">
-            <Table status={"dashboard"}/>
+            <Table status={"genre"} />
           </div>
         </div>
       </div>
