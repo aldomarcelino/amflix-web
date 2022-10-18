@@ -1,8 +1,13 @@
-export default function Modal() {
-  return (
-    <>
+import Table from "../components/Table";
+import useToggle from "../hooks/useToggle";
+
+export default function Dashboard() {
+  let content = "";
+  const { open, setOn, setOff } = useToggle();
+  if (open) {
+    content = (
       <div
-        className="py-12 bg-gray-100 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0"
+        className="py-12 bg-gray-700 bg-opacity-50 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0"
         id="modal"
       >
         <div
@@ -137,10 +142,11 @@ export default function Modal() {
                 Cancel
               </button>
             </div>
-            <button
+            <div
               className="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"
               aria-label="close modal"
               role="button"
+              onClick={setOff}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -158,17 +164,60 @@ export default function Modal() {
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
-            </button>
+            </div>
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-center py-12" id="button">
-        <button
-          className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 mx-auto transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm"
-          // onClick={() => modalHandler(true)}
-        >
-          Open Modal
-        </button>
+    );
+  }
+  return (
+    <>
+      {content}
+      <div className="w-full xl:w-8/12  px-4 mx-auto ml-96 mt-4 mb-20">
+        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+          <div className="rounded-t mb-0 px-4 py-3 border-0">
+            <div className="flex flex-wrap items-center">
+              <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 className="font-semibold text-base text-blueGray-700">
+                  Movie List
+                </h3>
+              </div>
+              <div className="px-4">
+                <button
+                  onClick={setOn}
+                  className="flex items-center h-10 bg-red text-white active:bg-rose-900 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                  Create Movie
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="block w-full overflow-x-auto">
+            <Table
+              status={"dashboard"}
+              head={[
+                "NO",
+                "NAME",
+                "GENRE",
+                "RATING",
+                "CREATED BY",
+                "MAIN IMAGE",
+                "IMAGES",
+                "ACTIONS",
+              ]}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

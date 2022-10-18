@@ -1,19 +1,19 @@
-import Dashboard from "./components/Dashboard";
-import Genre from "./components/Genre";
-import Modal from "./components/Modal";
+import Dashboard from "./pages/Dashboard";
+import Genre from "./pages/Genre";
 import NavBar from "./components/NavBar";
+import RegisterAdmin from "./pages/RegisterAdmin";
 import Sidebar from "./components/Sidebar";
 import Signin from "./components/Signin";
 
 function App() {
   return (
     <div className="App">
-      {/* <NavBar /> */}
-      {/* <Sidebar /> */}
+      <NavBar />
+      <Sidebar />
       {/* <Signin /> */}
       <Dashboard />
       <Genre />
-      <Modal />
+      <RegisterAdmin />
     </div>
   );
 }
