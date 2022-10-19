@@ -25,13 +25,14 @@ export default function Main() {
   return (
     <div className="w-full h-[95vh] ">
       <div className="w-full h-full">
-        <div className="absolute w-full h-[95vh] bg-gradient-to-tr from-black "></div>
+        <div className="absolute w-full h-[95vh] bg-gradient-to-r from-black "></div>
+        <div className="absolute w-full h-[95vh] bg-gradient-to-t from-black "></div>
         <img
           className="w-full h-full object-cover"
           src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
           alt={movie?.title}
         />
-        <div className="absolute w-full top-[20%] p-4 md:p-8">
+        <div className="absolute w-full top-[15%] p-4 md:p-8">
           <h1 className="text-3xl md:text-5xl font-bold text-white">
             {movie?.title}
           </h1>
@@ -49,12 +50,14 @@ export default function Main() {
           <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200">
             {truncateString(movie?.overview, 140)}
           </p>
-          <div className="mt-60"></div>
-          <Rows
-            rowId="1"
-            title="Up Coming"
-            fetchURL={requests.requestUpComing}
-          />
+          <div className="mt-32">
+            <Rows
+              rowId="6"
+              title="ORIGINAL AMFLIX"
+              fetchURL={requests.requestOriginal}
+              status={"origin"}
+            />
+          </div>
         </div>
       </div>
     </div>

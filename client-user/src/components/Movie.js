@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-function Movie({ movie }) {
+function Movie(props) {
+  const { movie, status } = props;
   const [like, setLike] = useState(false);
-
+  let imgUrl = movie?.backdrop_path;
+  let myClass =
+    "w-[160px] sm:w-[200px] md:w-[240px] lg:w-[300px] inline-block cursor-pointer relative p-2";
+  if (status) {
+    imgUrl = movie?.poster_path;
+    myClass =
+      "w-[160px] sm:w-[200px] md:w-[240px] lg:w-[260px] inline-block cursor-pointer relative p-2";
+  }
   return (
-    <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2">
+    <div className={myClass}>
       <img
         className="w-full h-auto block"
-        src={`https://image.tmdb.org/t/p/w500/${movie?.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/w500/${imgUrl}`}
         alt={movie?.title}
       />
       <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white m-1">
