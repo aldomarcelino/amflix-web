@@ -1,14 +1,13 @@
 "use strict";
 const { Model } = require("sequelize");
+const generateSlug = require("../helpers/sluggen");
 module.exports = (sequelize, DataTypes) => {
   class Movie extends Model {
     static associate(models) {
       Movie.belongsTo(models.User, {
         foreignKey: "authorId",
       });
-      Movie.belongsTo(models.Genre, {
-        foreignKey: "genreId",
-      });
+      Movie.hasMany(models.GenreMovie);
       Movie.hasMany(models.MovieCasts);
     }
   }
@@ -32,14 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       trailerUrl: DataTypes.STRING,
-      slug: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: true,
-          notNull: true,
-        },
-      },
+      slug: DataTypes.STRING,
       rating: {
         allowNull: false,
         type: DataTypes.INTEGER,
@@ -51,7 +43,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       popularity: DataTypes.INTEGER,
       poster_path: DataTypes.STRING,
-      genreId: DataTypes.INTEGER,
       authorId: DataTypes.INTEGER,
     },
     {
@@ -59,5 +50,8 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Movie",
     }
   );
+  Movie.beforeCreate((movie) => {
+    movie.slug = generateSlug(movie.title);
+  });
   return Movie;
 };

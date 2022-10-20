@@ -23,7 +23,7 @@ export default function MovieModal({ open, setOff }) {
     setImages([...images, ""]);
   };
   const handleRemove = (index) => {
-    let temp = images.filter((el, i) => i !== index);
+    let temp = images.filter((_el, i) => i !== index);
     setImages(temp);
   };
   if (open)
@@ -103,7 +103,7 @@ export default function MovieModal({ open, setOff }) {
               value={newMovie.imgUrl}
               onChange={handleChange}
             />
-            {images.map((el, i) => (
+            {images.map((_el, i) => (
               <div className="flex" key={i + "i"}>
                 <input
                   type="text"

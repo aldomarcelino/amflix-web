@@ -10,7 +10,8 @@ export default function Table(props) {
   const { movies } = useSelector((state) => state.movies);
   const { genre } = useSelector((state) => {
     console.log(state, "<<<<<");
-    return state.genre});
+    return state.genre;
+  });
   let tBody;
 
   useEffect(() => {
