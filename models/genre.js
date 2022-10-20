@@ -3,9 +3,7 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Genre extends Model {
     static associate(models) {
-      Genre.hasMany(models.Movie, {
-        foreignKey: "genreId",
-      });
+      Genre.hasMany(models.GenreMovie);
     }
   }
   Genre.init(

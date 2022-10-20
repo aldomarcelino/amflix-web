@@ -22,9 +22,6 @@ const errorHandler = async (err, req, res, next) => {
     case "Not Found":
       res.status(404).json({ message: "Data Not Found" });
       break;
-    case "favoriteExist":
-      res.status(400).json({ message: "You allrady have it" });
-      break;
     default:
       res.status(500).json({ message: "Internal Server Error" });
       break;

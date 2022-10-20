@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { hashThePassword } = require("../helpers/encryption");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
@@ -39,5 +40,9 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "User",
     }
   );
+  User.beforeCreate((user) => {
+    user.password = hashThePassword(user.password);
+    if (!user.role) user.role = "Admin";
+  });
   return User;
 };
