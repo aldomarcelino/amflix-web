@@ -17,7 +17,6 @@ export default function MovieModal({ open, setOff }) {
       ...newMovie,
     };
     theMovie[name] = value;
-    console.log(theMovie, "XXXXXXXX");
     setNewMovie(theMovie);
   };
   const handleImages = () => {
@@ -26,10 +25,6 @@ export default function MovieModal({ open, setOff }) {
   const handleRemove = (index) => {
     let temp = images.filter((el, i) => i !== index);
     setImages(temp);
-    // images.pop();
-    // 2
-    // []
-    //
   };
   if (open)
     return (
@@ -81,7 +76,7 @@ export default function MovieModal({ open, setOff }) {
             <label className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
               Genre
             </label>
-            <fieldset className="mb-5">
+            <fieldset className="mb-1">
               {genre?.map((el) => (
                 <div className="flex items-center mb-4" key={el.id}>
                   <input
@@ -98,7 +93,7 @@ export default function MovieModal({ open, setOff }) {
               ))}
             </fieldset>
             <label className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-              Image URL
+              Casts
             </label>
             <input
               type="text"
@@ -124,7 +119,7 @@ export default function MovieModal({ open, setOff }) {
               <div>
                 <button
                   onClick={handleImages}
-                  className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red transition duration-150 ease-in-out hover:bg-rose-700 bg-red rounded text-white px-8 py-2 text-sm"
+                  className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition duration-150 ease-in-out hover:bg-emerald-500 bg-emerald-500 rounded text-white px-8 py-2 text-sm"
                 >
                   Add Image
                 </button>

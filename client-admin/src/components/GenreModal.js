@@ -31,7 +31,7 @@ export default function GenreModal({ open, setOff }) {
             <input
               name="name"
               className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
-              placeholder="James"
+              placeholder="Drama"
               value={genre.name}
               onChange={handleChange}
             />

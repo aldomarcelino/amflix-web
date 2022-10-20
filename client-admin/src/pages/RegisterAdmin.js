@@ -14,7 +14,7 @@ export default function RegisterAdmin() {
               <div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
-                    <label for="" className="text-xs font-semibold px-1">
+                    <label className="text-xs font-semibold px-1">
                       Username
                     </label>
                     <div className="flex">
