@@ -4,7 +4,10 @@ export default function RowsGenre(props) {
     genre: { name, createdAt, updatedAt, id },
   } = props;
   const handleDelete = async () => {
-    await fetch(`http://localhost:3000/genre/${id}`, { method: "DELETE" });
+    await fetch(`http://localhost:3000/movies/genre/${id}`, {
+      method: "DELETE",
+      headers: { access_token: localStorage.getItem("access_token") },
+    });
   };
 
   return (

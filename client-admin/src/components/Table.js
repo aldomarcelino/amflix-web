@@ -1,7 +1,7 @@
+import { useEffect } from "react";
 import RowsMovie from "./RowsMovie";
 import RowsGenre from "./RowsGenre";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { fetchMovies, fetchGenre } from "../store/actions/movies";
 
 export default function Table(props) {
@@ -9,14 +9,13 @@ export default function Table(props) {
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.movies);
   const { genre } = useSelector((state) => {
-    console.log(state, "<<<<<");
     return state.genre;
   });
   let tBody;
 
   useEffect(() => {
     dispatch(fetchMovies("http://localhost:3000/movies"));
-    dispatch(fetchGenre("http://localhost:3000/genre"));
+    dispatch(fetchGenre("http://localhost:3000/movies/genre"));
   }, []);
 
   const tHead = head.map((e, i) => {

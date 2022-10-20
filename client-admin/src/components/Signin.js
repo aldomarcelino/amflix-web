@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Signin() {
   const navigate = useNavigate();
@@ -15,8 +16,8 @@ function Signin() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("url________------", process.env.REACT_APP_BASE_URL);
-    fetch(`${process.env.REACT_APP_BASE_URL}/signin`, {
+    console.log(process.env.REACT_APP_BASE_URL, "<<<<<<");
+    fetch(`http://localhost:3000/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,6 +28,14 @@ function Signin() {
       .then((data) => {
         console.log("Success:", data);
         localStorage.setItem("access_token", data.accessToken);
+        navigate("/");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Sign in success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.error("Error:", error);

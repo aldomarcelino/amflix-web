@@ -15,7 +15,7 @@ export default function RowsMovie(props) {
         Action
       </td>
       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        <i className="fas fa-arrow-up text-emerald-500 mr-4">{rating}</i>
+        <i className="fas fa-arrow-up text-emerald-500 mr-4">{rating / 10}</i>
       </td>
       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
         <i className="fas fa-arrow-up text-blue-500 mr-4">
@@ -24,7 +24,7 @@ export default function RowsMovie(props) {
       </td>
       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
         <div className="items-center w-40 rounded">
-          <img src={imgUrl} alt={title} />
+          <img src={`https://image.tmdb.org/t/p/w500/${imgUrl}`} alt={title} />
         </div>
       </td>
       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
