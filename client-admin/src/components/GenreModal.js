@@ -6,11 +6,25 @@ export default function GenreModal({ open, setOff }) {
     e.preventDefault();
     setGenre({ name: e.target.value });
   };
-  const hangleClose = () => {
+  const handleClose = () => {
     setOff();
     setGenre({ name: "" });
   };
-
+  const handleSubmit = async () => {
+    await fetch("http://localhost:3000/genre", {
+      method: "POST",
+      headers: {
+        // 'Content-Type': 'application/json'
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: {
+        name: genre.name,
+        createdAt: "SEKARANG",
+        updatedAt: "SEKARANG",
+      },
+    });
+  };
+  
   if (open)
     return (
       <div
@@ -36,11 +50,14 @@ export default function GenreModal({ open, setOff }) {
               onChange={handleChange}
             />
             <div className="flex items-center justify-start w-full">
-              <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red transition duration-150 ease-in-out hover:bg-rose-700 bg-red rounded text-white px-8 py-2 text-sm">
+              <button
+                onClick={handleSubmit}
+                className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red transition duration-150 ease-in-out hover:bg-rose-700 bg-red rounded text-white px-8 py-2 text-sm"
+              >
                 Submit
               </button>
               <button
-                onClick={hangleClose}
+                onClick={handleClose}
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm"
               >
                 Cancel
@@ -50,7 +67,7 @@ export default function GenreModal({ open, setOff }) {
               className="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"
               aria-label="close modal"
               role="button"
-              onClick={hangleClose}
+              onClick={handleClose}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
