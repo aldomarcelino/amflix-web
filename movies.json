@@ -98,6 +98,24 @@
       "name":"Action",
       "createdAt":"now",
       "updatedAt":"now"
+    },
+    {
+      "id":2,
+      "name":"Horror",
+      "createdAt":"now",
+      "updatedAt":"now"
+    },
+    {
+      "id":3,
+      "name":"Mystery",
+      "createdAt":"now",
+      "updatedAt":"now"
+    },
+    {
+      "id":4,
+      "name":"Adventure",
+      "createdAt":"now",
+      "updatedAt":"now"
     }
   ],
   "casts":[
