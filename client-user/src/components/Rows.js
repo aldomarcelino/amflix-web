@@ -10,6 +10,7 @@ export default function Rows(props) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const { open, setOn, setOff } = useToggle();
+  const [theMovie, settheMovie] = useState({});
 
   useEffect(() => {
     fetch(fetchURL)
@@ -43,6 +44,7 @@ export default function Rows(props) {
 
   const handleClick = (movie) => {
     setOn();
+    settheMovie(movie);
     console.log("Masuk bang", movie);
     if (!trailerUrl) {
       movieTrailer(movie?.title || "")
@@ -56,7 +58,13 @@ export default function Rows(props) {
 
   return (
     <>
-      <Modal open={open} setOff={setOff} opts={opts} trailerUrl={trailerUrl} />
+      <Modal
+        open={open}
+        setOff={setOff}
+        opts={opts}
+        trailerUrl={trailerUrl}
+        movie={theMovie}
+      />
       <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
       <div className="relative flex items-center group">
         <MdChevronLeft

@@ -1,20 +1,13 @@
-import Dashboard from "./pages/Dashboard";
-import Genre from "./pages/Genre";
-import NavBar from "./components/NavBar";
-import RegisterAdmin from "./pages/RegisterAdmin";
-import Sidebar from "./components/Sidebar";
-import Signin from "./components/Signin";
+import { RouterProvider } from "react-router-dom";
+import { Provider as MyRedux } from "react-redux";
+import router from "./router";
+import store from "./store";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <Sidebar />
-      {/* <Signin /> */}
-      <Dashboard />
-      <Genre />
-      <RegisterAdmin />
-    </div>
+    <MyRedux store={store}>
+      <RouterProvider router={router} />;
+    </MyRedux>
   );
 }
 

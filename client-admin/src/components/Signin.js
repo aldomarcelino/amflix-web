@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
 function Signin() {
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    localStorage.setItem("access_token", "masukkk");
+    navigate("/");
+  };
   return (
     <>
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col justify-center items-center h-screen">
@@ -48,7 +54,10 @@ function Signin() {
           </label>
         </div>
         <div className="flex flex-col justify-items-start">
-          <button className="shadow appearance-none border rounded w-80 py-2 px-3 text-grey-darker mb-3 bg-red font-bold text-stone-50">
+          <button
+            onClick={handleLogin}
+            className="shadow appearance-none border rounded w-80 py-2 px-3 text-grey-darker mb-3 bg-red font-bold text-stone-50"
+          >
             Sign In
           </button>
           <button>

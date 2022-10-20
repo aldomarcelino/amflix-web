@@ -1,12 +1,10 @@
-import { XIcon } from "@heroicons/react/outline";
+import { XIcon, StarIcon } from "@heroicons/react/outline";
 import MuiModal from "@mui/material/Modal";
 import YouTube from "react-youtube";
 
 export default function Modal(props) {
   const { open, setOff, opts, trailerUrl, movie } = props;
   let genres;
-  console.log(open, "<<<<<<<<");
-
   return (
     <MuiModal
       open={open}
@@ -27,7 +25,7 @@ export default function Modal(props) {
               <p className="font-semibold text-green-400">
                 {movie?.vote_average * 10}% Match
               </p>
-              <p className="font-light">
+              <p className="font-light text-[gray]">
                 {movie?.release_date || movie?.first_air_date}
               </p>
               <div className="flex h-4 items-center justify-center rounded border border-white/40 px-1.5 text-xs text-white">
@@ -35,11 +33,17 @@ export default function Modal(props) {
               </div>
             </div>
             <div className="flex flex-col gap-x-10 gap-y-4 font-light">
-              <p className="w-5/6">{movie?.overview}</p>
+              <p className="w-5/6 text-white">{movie?.overview}</p>
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
                   <span className="text-[gray]">Genres:</span>
                   {genres?.map((el) => el.name).join(", ")}
+                </div>
+                <div className=" flex">
+                  <StarIcon className="h-5 w-5 text-teal-50" />
+                  <span className="text-teal-50 ml-1">
+                    {movie.vote_average}
+                  </span>
                 </div>
               </div>
             </div>

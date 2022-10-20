@@ -1,15 +1,22 @@
+import { useNavigate, Link } from "react-router-dom";
+
 export default function Sidebar() {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/signin");
+  };
   return (
     <div className="flex flex-col bg-gray-50 text-gray-800">
       <div className="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
         <div className="flex items-center justify-center h-14 border-b m-1">
-          <div className="text-red text-xl">AMFLIX</div>
+          <div className="text-red text-3xl font-bold">AMFLIX</div>
         </div>
         <div className="overflow-y-auto overflow-x-hidden flex-grow">
           <ul className="flex flex-col py-4 space-y-1">
             <li>
               <button
-                href="#"
+                onClick={() => navigate("/")}
                 className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
@@ -29,32 +36,31 @@ export default function Sidebar() {
               </button>
             </li>
             <li>
-              <button
-                href="#"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6"
-              >
-                <span className="inline-flex justify-center items-center ml-4">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
-                  </svg>
-                </span>
-                <span className="ml-2 text-sm tracking-wide truncate">
-                  Genre
-                </span>
-                <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red bg-indigo-50 rounded-full">
-                  New
-                </span>
-              </button>
+              <Link to={"/genre"}>
+                <button className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6">
+                  <span className="inline-flex justify-center items-center ml-4">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+                    </svg>
+                  </span>
+                  <span className="ml-2 text-sm tracking-wide truncate">
+                    Genre
+                  </span>
+                  <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red bg-indigo-50 rounded-full">
+                    New
+                  </span>
+                </button>
+              </Link>
             </li>
             <li>
               <button
-                href="#"
+                onClick={() => navigate("/registeradmin")}
                 className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4"></span>
@@ -67,16 +73,14 @@ export default function Sidebar() {
                 >
                   <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
-
                 <span className="ml-2 text-sm tracking-wide truncate">
                   Register Admin
                 </span>
               </button>
             </li>
-
             <li>
               <button
-                href="#"
+                onClick={handleLogout}
                 className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
