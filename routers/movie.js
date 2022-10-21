@@ -7,5 +7,6 @@ router.post("/", MovieController.addNewMovies);
 router.get("/genre", MovieController.showAllGenre);
 router.post("/genre", MovieController.addNewGenre);
 router.delete("/:id", MovieController.deleteTheMovie);
+router.put("/genre/:id", MovieController.updateTheGenre);
 router.delete("/genre/:id", MovieController.deleteTheGenre);
 module.exports = router;
