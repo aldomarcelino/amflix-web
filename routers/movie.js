@@ -5,6 +5,7 @@ const router = express.Router();
 router.get("/", MovieController.showAllMovie);
 router.post("/", MovieController.addNewMovies);
 router.get("/genre", MovieController.showAllGenre);
+router.get("/casts", MovieController.showAllCast);
 router.post("/genre", MovieController.addNewGenre);
 router.delete("/:id", MovieController.deleteTheMovie);
 router.put("/genre/:id", MovieController.updateTheGenre);
