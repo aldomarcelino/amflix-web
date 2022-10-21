@@ -1,3 +1,4 @@
+import MuiModal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createGenre, updateTheGenre } from "../store/actions/movies";
@@ -26,11 +27,12 @@ export default function GenreModal(props) {
   };
   if (open)
     return (
-      <form onSubmit={handleSubmit}>
-        <div
-          className="py-12 bg-gray-700 bg-opacity-50 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0 "
-          id="modal"
-        >
+      <MuiModal
+        open={open}
+        onClose={setOff}
+        className="py-12 bg-gray-700 bg-opacity-50 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0 "
+      >
+        <form onSubmit={handleSubmit}>
           <div
             role="alert"
             className="container mx-auto w-11/12 md:w-2/3 max-w-lg mt-[15%]"
@@ -88,8 +90,8 @@ export default function GenreModal(props) {
               </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </MuiModal>
     );
   else return "";
 }

@@ -1,11 +1,15 @@
+import CastModal from "../components/CastsModal";
 import MovieModal from "../components/MovieModal";
 import Table from "../components/Table";
-import useToggle from "../hooks/useToggle";
+import { useToggle, useToggleCasts } from "../hooks/useToggle";
 
 export default function Dashboard() {
   const { open, setOn, setOff } = useToggle();
+  const { openCast, setOnCast, setOffCast } = useToggleCasts();
+
   return (
     <>
+      <CastModal open={openCast} setOff={setOffCast} />
       <MovieModal open={open} setOff={setOff} />
       <div className="w-full xl:w-8/12  px-4 mx-auto ml-96 mt-4 mb-20">
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -38,6 +42,7 @@ export default function Dashboard() {
           </div>
           <div className="block w-full overflow-x-auto">
             <Table
+              setOnCast={setOnCast}
               status={"dashboard"}
               head={[
                 "NO",
@@ -45,8 +50,8 @@ export default function Dashboard() {
                 "GENRE",
                 "RATING",
                 "CREATED BY",
-                "MAIN IMAGE",
-                "IMAGES",
+                "IMAGE",
+                "CASTS",
                 "ACTIONS",
               ]}
             />

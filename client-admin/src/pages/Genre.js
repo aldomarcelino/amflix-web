@@ -1,7 +1,7 @@
 import { useState } from "react";
 import GenreModal from "../components/GenreModal";
 import Table from "../components/Table";
-import useToggle from "../hooks/useToggle";
+import { useToggle } from "../hooks/useToggle";
 
 export default function Genre() {
   const [genre, setGenre] = useState({});

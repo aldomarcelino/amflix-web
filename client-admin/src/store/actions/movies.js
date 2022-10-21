@@ -32,6 +32,8 @@ export function fetchGenre() {
   };
 }
 
+export function createNewMovie() {}
+
 export function createGenre(genre) {
   return async (dispatch) => {
     try {
@@ -73,17 +75,37 @@ export function updateTheGenre(genre) {
   };
 }
 
+export function deleteTheMovie(id) {
+  return (dispatch) => {
+    try {
+      confirmAlert().then(async (result) => {
+        if (result.isConfirmed) {
+          const data = await fetch(`${base_url}/movies/${id}`, {
+            method: "DELETE",
+            headers: { access_token: localStorage.getItem("access_token") },
+          });
+          if (!data.ok) throw Error("Something Wrong");
+          Swal.fire("Deleted!", "movie has been deleted.", "success");
+          dispatch(fetchMovies());
+        }
+      });
+    } catch (err) {
+      errorAlert(err);
+    }
+  };
+}
+
 export function deleteGenre(id) {
   return (dispatch) => {
     try {
       confirmAlert().then(async (result) => {
         if (result.isConfirmed) {
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
           let response = await fetch(`${base_url}/movies/genre/${id}`, {
             method: "DELETE",
             headers: { access_token: localStorage.getItem("access_token") },
           });
           if (!response.ok) throw new Error("Internal Server Error");
+          Swal.fire("Deleted!", "genre has been deleted.", "success");
           dispatch(fetchGenre());
         }
       });
