@@ -1,13 +1,17 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { createGenre, updateTheGenre } from "../store/actions/movies";
 
-export default function GenreModal({ open, setOff }) {
+export default function GenreModal(props) {
+  let { open, setOff, theGenre, type } = props;
   const [genre, setGenre] = useState({ name: "" });
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const title = type === "add" ? "Create New Category" : "Edit The Category";
+  useEffect(() => {
+    if (type === "edit") setGenre({ id: theGenre.id, name: theGenre.name });
+  }, [theGenre]);
   const handleChange = (e) => {
-    e.preventDefault();
-    setGenre({ name: e.target.value });
+    setGenre({ ...genre, name: e.target.value });
   };
   const handleClose = () => {
     setOff();
@@ -15,34 +19,11 @@ export default function GenreModal({ open, setOff }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(process.env.REACT_APP_BASE_URL, "<<<<<<");
-    fetch(`http://localhost:3000/movies/genre`, {
-      method: "POST",
-      headers: {
-        access_token: localStorage.getItem("access_token"),
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(genre),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        setOff();
-        setGenre({ name: "" });
-        navigate("/genre");
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: data.message,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    setOff();
+    if (type === "add") dispatch(createGenre(genre));
+    else dispatch(updateTheGenre(genre));
+    setGenre({ name: "" });
   };
-
   if (open)
     return (
       <form onSubmit={handleSubmit}>
@@ -56,7 +37,7 @@ export default function GenreModal({ open, setOff }) {
           >
             <div className="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
               <h1 className="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">
-                Create New Category
+                {title}
               </h1>
               <label className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
                 Category Name

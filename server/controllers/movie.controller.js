@@ -46,6 +46,16 @@ class MovieController {
     }
   }
 
+  static async updateTheGenre(req, res, next) {
+    try {
+      const { name } = req.body;
+      await Genre.update({ name }, { where: { id: req.params.id } });
+      res.status(201).json({ message: "genre updated successfully" });
+    } catch (err) {
+      next(err);
+    }
+  }
+
   static async deleteTheMovie(req, res, next) {
     try {
       let data = await Movie.findByPk(req.params.id);

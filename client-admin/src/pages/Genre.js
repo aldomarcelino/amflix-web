@@ -1,13 +1,30 @@
+import { useState } from "react";
 import GenreModal from "../components/GenreModal";
 import Table from "../components/Table";
 import useToggle from "../hooks/useToggle";
 
 export default function Genre() {
+  const [genre, setGenre] = useState({});
   const { open, setOn, setOff } = useToggle();
+  const [modalType, setModalType] = useState("add");
+  const handleEdit = (data) => {
+    setModalType("edit");
+    setOn();
+    setGenre(data);
+  };
+  const handleAdd = () => {
+    setModalType("add");
+    setOn();
+  };
 
   return (
     <>
-      <GenreModal open={open} setOff={setOff} />
+      <GenreModal
+        open={open}
+        setOff={setOff}
+        type={modalType}
+        theGenre={genre}
+      />
       <div className="w-full xl:w-8/12  px-4 mx-auto ml-96 mt-4 mb-20">
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
           <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -19,7 +36,7 @@ export default function Genre() {
               </div>
               <div className="px-4">
                 <button
-                  onClick={setOn}
+                  onClick={handleAdd}
                   className="flex items-center h-10 bg-red text-white active:bg-rose-900 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 >
                   <svg
@@ -39,6 +56,7 @@ export default function Genre() {
           </div>
           <div className="block w-full overflow-x-auto">
             <Table
+              handleEdit={handleEdit}
               status={"genre"}
               head={["no", "name", "createdat", "updatedat", "ACTIONS"]}
             />

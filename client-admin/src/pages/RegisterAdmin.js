@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function RegisterAdmin() {
+  const [user, setUser] = useState();
   return (
     <>
       <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
@@ -39,9 +42,7 @@ export default function RegisterAdmin() {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
-                    <label for="" className="text-xs font-semibold px-1">
-                      Email
-                    </label>
+                    <label className="text-xs font-semibold px-1">Email</label>
                     <div className="flex">
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                         <svg
@@ -64,7 +65,7 @@ export default function RegisterAdmin() {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
-                    <label for="" className="text-xs font-semibold px-1">
+                    <label className="text-xs font-semibold px-1">
                       Password
                     </label>
                     <div className="flex">
@@ -89,7 +90,7 @@ export default function RegisterAdmin() {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
-                    <label for="" className="text-xs font-semibold px-1">
+                    <label className="text-xs font-semibold px-1">
                       Phone Number
                     </label>
                     <div className="flex">
@@ -114,7 +115,7 @@ export default function RegisterAdmin() {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-12">
-                    <label for="" className="text-xs font-semibold px-1">
+                    <label className="text-xs font-semibold px-1">
                       Address
                     </label>
                     <div className="flex">

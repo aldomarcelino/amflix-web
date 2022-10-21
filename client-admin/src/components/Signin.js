@@ -14,32 +14,33 @@ function Signin() {
     temp[name] = value;
     setAccount(temp);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(process.env.REACT_APP_BASE_URL, "<<<<<<");
-    fetch(`http://localhost:3000/signin`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(account),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        localStorage.setItem("access_token", data.accessToken);
-        navigate("/");
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Sign in success",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+    try {
+      let response = await fetch(`http://localhost:3000/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(account),
       });
+      let data = await response.json();
+      if (data.err) throw data.message;
+      localStorage.setItem("access_token", data.accessToken);
+      navigate("/");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Sign in success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: error,
+      });
+    }
   };
 
   return (
