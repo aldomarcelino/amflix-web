@@ -32,13 +32,58 @@ export function fetchGenre() {
   };
 }
 
-export function createNewMovie() {}
+export function createNewMovie(movie) {
+  return async (dispatch) => {
+    console.log(movie);
+    try {
+      let data = await fetch(`${base_url}/movies`, {
+        method: "POST",
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(movie),
+      });
+      if (!data.ok) {
+        data = await data.json();
+        throw data.message;
+      }
+      successAlert("new movie success created!");
+      dispatch(fetchMovies());
+    } catch (err) {
+      errorAlert(err);
+    }
+  };
+}
+
+export function updateTheMovie(movie, id) {
+  console.log("masuk ommmm");
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`${base_url}/movies/${id}`, {
+        method: "PUT",
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(movie),
+      });
+      if (!response.ok) {
+        response = await response.json();
+        throw response.message;
+      }
+      successAlert("the movie success updated!");
+      dispatch(fetchMovies());
+    } catch (err) {
+      errorAlert(err);
+    }
+  };
+}
 
 export function createGenre(genre) {
   return async (dispatch) => {
     try {
-      if (!genre.name) throw Error("Insert first");
-      let response = await fetch(`http://localhost:3000/movies/genre`, {
+      let response = await fetch(`${base_url}/movies/genre`, {
         method: "POST",
         headers: {
           access_token: localStorage.getItem("access_token"),
@@ -46,7 +91,10 @@ export function createGenre(genre) {
         },
         body: JSON.stringify(genre),
       });
-      if (!response.ok) throw new Error("Internalku Server Error");
+      if (!response.ok) {
+        response = await response.json();
+        throw response.message;
+      }
       successAlert(genre.name + " success created!");
       dispatch(fetchGenre());
     } catch (err) {
@@ -66,7 +114,10 @@ export function updateTheGenre(genre) {
         },
         body: JSON.stringify({ name: genre.name }),
       });
-      if (!response.ok) throw Error(response.message);
+      if (!response.ok) {
+        response = await response.json();
+        throw response.message;
+      }
       successAlert("genre success updated!");
       dispatch(fetchGenre());
     } catch (err) {

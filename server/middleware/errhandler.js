@@ -27,7 +27,7 @@ const errorHandler = async (err, req, res, next) => {
     case "Forbidden":
       res.status(403).json({ message: "Not Authorize", err: true });
       break;
-    case "Not Found":
+    case "Not_Found":
       res.status(404).json({ message: "Data Not Found", err: true });
       break;
     default:

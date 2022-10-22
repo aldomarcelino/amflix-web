@@ -1,11 +1,14 @@
 import MuiModal from "@mui/material/Modal";
 export default function CastModal(props) {
   let { open, setOff, casts } = props;
+  let { MovieCasts, title } = casts;
   let mainImg,
+    actorName,
     temp = [];
   if (open) {
-    mainImg = casts[0].Cast.profilePict;
-    temp = casts.map((el) => el.Cast.profilePict);
+    mainImg = MovieCasts[0].Cast.profilePict;
+    actorName = MovieCasts[0]?.Cast.name;
+    temp = MovieCasts.filter((_el, i) => i !== 0);
   }
   return (
     <MuiModal
@@ -15,26 +18,28 @@ export default function CastModal(props) {
     >
       <div
         role="alert"
-        className=" container mx-auto w-11/12 md:w-2/3 max-w-[40%] mt-[3%]"
+        className=" container mx-auto w-11/12 md:w-2/3 max-w-[40%] "
       >
         <div className="relative py-4 px-5 md:px-5 bg-white shadow-md rounded border border-gray-400">
           <h1 className="text-gray-800 text-2xl font-bold tracking-normal leading-tight mb-1">
-            Luna Maya
+            {title + " Actors"}
           </h1>
           <div className="flex flex-wrap justify-center items-center">
             <div className="w-[50%] px-4">
               <img
                 src={"https://image.tmdb.org/t/p/w500" + mainImg}
-                alt="..."
+                alt={actorName}
                 className="shadow rounded max-w-full h-auto align-middle border-none"
               />
             </div>
             <div className="flex mt-5 justify-center items-center">
-              {temp.map((el, i) => (
-                <div className="w-[30%] px-4">
+              {temp?.map((el, i) => (
+                <div className="w-[30%] px-4" key={i}>
                   <img
-                    src={"https://image.tmdb.org/t/p/w500" + el}
-                    alt="..."
+                    src={
+                      "https://image.tmdb.org/t/p/w500" + el?.Cast.profilePict
+                    }
+                    alt={el?.Cast.name}
                     className="shadow rounded max-w-full h-auto align-middle border-none"
                   />
                 </div>

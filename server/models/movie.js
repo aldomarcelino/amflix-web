@@ -53,5 +53,8 @@ module.exports = (sequelize, DataTypes) => {
   Movie.beforeCreate((movie) => {
     movie.slug = generateSlug(movie.title);
   });
+  Movie.beforeUpdate((movie) => {
+    movie.slug = generateSlug(movie.title);
+  });
   return Movie;
 };

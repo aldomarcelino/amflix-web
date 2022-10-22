@@ -8,14 +8,24 @@ export default function Dashboard() {
   const { open, setOn, setOff } = useToggle();
   const { openCast, setOnCast, setOffCast } = useToggleCasts();
   const [casts, setCasts] = useState({});
+  const [theMovie, setTheMovie] = useState({});
   const handleShowCast = (data) => {
     setCasts(data);
     setOnCast();
   };
+  const handleEdit = (data) => {
+    setTheMovie(data);
+    setOn();
+  };
   return (
     <>
       <CastModal open={openCast} setOff={setOffCast} casts={casts} />
-      <MovieModal open={open} setOff={setOff} />
+      <MovieModal
+        open={open}
+        setOff={setOff}
+        theMovie={theMovie}
+        setTheMovie={setTheMovie}
+      />
       <div className="w-full xl:w-8/12  px-4 mx-auto ml-96 mt-4 mb-20">
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
           <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -48,6 +58,7 @@ export default function Dashboard() {
           <div className="block w-full overflow-x-auto">
             <Table
               handleShowCast={handleShowCast}
+              handleEditMovie={handleEdit}
               status={"dashboard"}
               head={[
                 "NO",
