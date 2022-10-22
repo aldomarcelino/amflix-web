@@ -90,6 +90,7 @@ class MovieController {
     }
   }
   static async updateTheMovie(req, res, next) {
+    console.log(req.body);
     const t = await sequelize.transaction();
     try {
       console.log(req.res);
