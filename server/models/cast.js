@@ -1,12 +1,12 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Casts extends Model {
+  class Cast extends Model {
     static associate(models) {
-      Casts.hasMany(models.MovieCasts);
+      Cast.hasMany(models.MovieCast, { foreignKey: "CastsId" });
     }
   }
-  Casts.init(
+  Cast.init(
     {
       name: {
         allowNull: false,
@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Casts",
+      modelName: "Cast",
     }
   );
-  return Casts;
+  return Cast;
 };

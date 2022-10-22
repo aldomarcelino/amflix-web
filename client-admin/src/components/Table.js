@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, fetchGenre } from "../store/actions/movies";
 
 export default function Table(props) {
-  const { status, head, handleEdit, setOnCast } = props;
+  const { status, head, handleEdit, handleShowCast } = props;
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.movies);
   const { genre } = useSelector((state) => {
@@ -29,7 +29,7 @@ export default function Table(props) {
 
   if (status === "dashboard") {
     tBody = movies.map((e, i) => (
-      <RowsMovie key={e.id} movie={e} no={i} setOnCast={setOnCast} />
+      <RowsMovie key={e.id} movie={e} no={i} handleShowCast={handleShowCast} />
     ));
   } else {
     tBody = genre.map((e, i) => (

@@ -93,7 +93,7 @@ function Signin() {
           <div className="flex flex-col justify-items-start">
             <button
               type="Submit"
-              className="shadow appearance-none border rounded w-80 py-2 px-3 text-grey-darker mb-3 bg-red font-bold text-stone-50"
+              className="shadow appearance-none border rounded w-80 py-2 px-3 text-grey-darker mb-3 bg-red hover:bg-rose-700 font-bold text-stone-50"
             >
               Sign In
             </button>

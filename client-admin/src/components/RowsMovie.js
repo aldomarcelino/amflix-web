@@ -2,11 +2,8 @@ import { useDispatch } from "react-redux";
 import { deleteTheMovie } from "../store/actions/movies";
 
 export default function RowsMovie(props) {
-  const {
-    no,
-    movie: { title, rating, imgUrl, id },
-    setOnCast,
-  } = props;
+  const { no, handleShowCast, movie } = props;
+  const { title, rating, imgUrl, id, MovieCasts } = movie;
   let dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteTheMovie(id));
@@ -38,7 +35,7 @@ export default function RowsMovie(props) {
       </td>
       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
         <button
-          onClick={setOnCast}
+          onClick={() => handleShowCast(MovieCasts)}
           className="bg-emerald-500 h-8 w-24 rounded text-yellow-50 font-bold"
         >
           Show Casts
