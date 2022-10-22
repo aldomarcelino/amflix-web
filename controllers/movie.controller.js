@@ -1,10 +1,12 @@
-const { Genre, Casts, MovieCasts, Movie } = require("../models");
+const { Genre, Cast, MovieCast, Movie } = require("../models");
 const axios = require("axios");
 
 class MovieController {
   static async showAllMovie(req, res, next) {
     try {
-      let data = await Movie.findAll();
+      let data = await Movie.findAll({
+        include: { model: MovieCast, include: Cast },
+      });
       res.status(200).json(data);
     } catch (err) {
       next(err);
@@ -25,7 +27,6 @@ class MovieController {
       let { data } = await axios.get(
         `https://api.themoviedb.org/3/person/popular?api_key=${process.env.TMDB_KEY}&language=en-US&page=1`
       );
-      console.log(data, "XXXXXX");
       data = data?.results?.map((el) => ({
         name: el.name,
         profilePict: el.profile_path,

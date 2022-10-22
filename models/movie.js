@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "authorId",
       });
       Movie.hasMany(models.GenreMovie);
-      Movie.hasMany(models.MovieCasts);
+      Movie.hasMany(models.MovieCast);
     }
   }
   Movie.init(
