@@ -51,17 +51,8 @@ class MovieController {
   static async addNewMovies(req, res, next) {
     const t = await sequelize.transaction();
     try {
-      const {
-        title,
-        synopsis,
-        trailerUrl,
-        rating,
-        name,
-        profilePict,
-        cast,
-        genre,
-      } = req.body;
-      console.log(req.body);
+      const { title, synopsis, trailerUrl, rating, imgUrl, cast, genre } =
+        req.body;
       const movie = await Movie.create(
         {
           title,
@@ -70,12 +61,12 @@ class MovieController {
           popularity: 0,
           rating,
           authorId: req.user.id,
+          imgUrl,
         },
         { transaction: t }
       );
       const genres = genre.map((el) => ({ MovieId: movie.id, GenreId: el }));
-      const data = [{ name, profilePict }, ...cast];
-      let actors = await Cast.bulkCreate(data, { transaction: t });
+      let actors = await Cast.bulkCreate(cast, { transaction: t });
       const casts = await actors.map((el) => ({
         MovieId: movie.id,
         CastsId: el.id,
@@ -90,24 +81,14 @@ class MovieController {
     }
   }
   static async updateTheMovie(req, res, next) {
-    console.log(req.body);
+    console.log(req.body, "<<<<<");
     const t = await sequelize.transaction();
     try {
-      console.log(req.res);
-      const {
-        title,
-        synopsis,
-        trailerUrl,
-        rating,
-        name,
-        profilePict,
-        cast,
-        genre,
-      } = req.body;
-      console.log(req.body);
+      const { title, synopsis, trailerUrl, rating, imgUrl, cast, genre } =
+        req.body;
       const theMovie = await Movie.findByPk(req.params.id);
       if (!theMovie) throw { name: "Not_Found" };
-      const movie = await Movie.update(
+      await Movie.update(
         {
           title,
           trailerUrl,
@@ -115,11 +96,10 @@ class MovieController {
           popularity: 0,
           rating,
           authorId: req.user.id,
+          imgUrl,
         },
         { transaction: t, where: { id: req.params.id }, individualHooks: true }
       );
-      const genres = genre.map((el) => ({ MovieId: movie.id, GenreId: el }));
-      const data = [{ name, profilePict }, ...cast];
       await GenreMovie.destroy({
         where: { MovieId: theMovie.id },
         transaction: t,
@@ -128,12 +108,16 @@ class MovieController {
         where: { MovieId: theMovie.id },
         transaction: t,
       });
-      let actors = await Cast.bulkCreate(data, {
-        transaction: t,
+      const genres =await genre.map((el) => ({
+        MovieId: theMovie.id,
+        GenreId: +el,
+      }));
+      let actors = await Cast.bulkCreate(cast, {
         updateOnDuplicate: ["id"],
+        transaction: t,
       });
       const casts = await actors.map((el) => ({
-        MovieId: movie.id,
+        MovieId: theMovie.id,
         CastsId: el.id,
       }));
       await GenreMovie.bulkCreate(genres, { transaction: t });
