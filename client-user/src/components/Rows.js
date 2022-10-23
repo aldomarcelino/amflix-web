@@ -4,14 +4,19 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import movieTrailer from "movie-trailer";
 import useToggle from "../hooks/useToggle";
 import Modal from "./Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies } from "../store/actions/movie.action";
 
 export default function Rows(props) {
   const { title, fetchURL, rowId, status } = props;
+  const dispatch = useDispatch();
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const { open, setOn, setOff } = useToggle();
   const [theMovie, settheMovie] = useState({});
-
+  useEffect(() => {
+    dispatch(fetchMovies());
+  }, []);
   useEffect(() => {
     fetch(fetchURL)
       .then((res) => res.json())

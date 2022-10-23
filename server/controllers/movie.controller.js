@@ -10,6 +10,20 @@ const {
 const axios = require("axios");
 
 class MovieController {
+  static async showAllMovieFree(req, res, next) {
+    try {
+      let data = await Movie.findAll({
+        include: [
+          { model: MovieCast, include: Cast },
+          { model: GenreMovie, include: Genre },
+          { model: User, attributes: ["email"] },
+        ],
+      });
+      res.status(200).json(data);
+    } catch (err) {
+      next(err);
+    }
+  }
   static async showAllMovie(req, res, next) {
     try {
       let data = await Movie.findAll({

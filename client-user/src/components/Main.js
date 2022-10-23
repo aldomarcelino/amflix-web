@@ -57,6 +57,31 @@ export default function Main() {
               fetchURL={requests.requestOriginal}
               status={"origin"}
             />
+            {/* <Rows
+              rowId="1"
+              title="Up Coming"
+              fetchURL={requests.requestUpComing}
+            />
+            <Rows
+              rowId="2"
+              title="Popular"
+              fetchURL={requests.requestPopular}
+            />
+            <Rows
+              rowId="3"
+              title="Tranding"
+              fetchURL={requests.requestLatest}
+            />
+            <Rows
+              rowId="4"
+              title="Now Playing"
+              fetchURL={requests.requestNowPlayig}
+            />
+            <Rows
+              rowId="5"
+              title="Top Rated"
+              fetchURL={requests.requestTopRated}
+            /> */}
           </div>
         </div>
       </div>
