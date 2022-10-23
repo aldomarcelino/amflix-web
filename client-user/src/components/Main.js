@@ -57,7 +57,7 @@ export default function Main() {
               fetchURL={requests.requestOriginal}
               status={"origin"}
             />
-            {/* <Rows
+            <Rows
               rowId="1"
               title="Up Coming"
               fetchURL={requests.requestUpComing}
@@ -81,7 +81,7 @@ export default function Main() {
               rowId="5"
               title="Top Rated"
               fetchURL={requests.requestTopRated}
-            /> */}
+            />
           </div>
         </div>
       </div>

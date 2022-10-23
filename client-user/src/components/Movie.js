@@ -3,7 +3,8 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function Movie(props) {
   const { movie, status } = props;
-
+  // const { title, synopsis, rating, poster_path } = movie;
+  console.log(movie, "<<<<<");
   const [like] = useState(false);
   let imgUrl = movie?.backdrop_path;
   let myClass =

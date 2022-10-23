@@ -5,28 +5,31 @@ import movieTrailer from "movie-trailer";
 import useToggle from "../hooks/useToggle";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../store/actions/movie.action";
+import { fetchMovies, fetchTmdbMovies } from "../store/actions/movie.action";
 
 export default function Rows(props) {
   const { title, fetchURL, rowId, status } = props;
   const dispatch = useDispatch();
+  const { myMovies } = useSelector((state) => state);
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const { open, setOn, setOff } = useToggle();
   const [theMovie, settheMovie] = useState({});
   useEffect(() => {
-    dispatch(fetchMovies());
-  }, []);
-  useEffect(() => {
+    // if (title === "ORIGINAL AMFLIX") {
+    //   dispatch(fetchMovies(fetchURL));
+    //   setMovies(myMovies);
+    // } else {
     fetch(fetchURL)
       .then((res) => res.json())
       .then((res) => {
-        console.log("Success:", res.results);
+        console.log("Succes:", res.results);
         setMovies(res.results);
       })
       .catch((err) => {
         console.error("Error:", err);
       });
+    // }
   }, [fetchURL]);
 
   const opts = {
