@@ -1,14 +1,12 @@
 import MuiModal from "@mui/material/Modal";
 export default function CastModal(props) {
   let { open, setOff, casts } = props;
-  let { MovieCasts, title } = casts;
-  let mainImg,
-    actorName,
-    temp = [];
+  let { temp, title } = casts;
+  let mainImg, actorName;
   if (open) {
-    mainImg = MovieCasts[0].Cast.profilePict;
-    actorName = MovieCasts[0]?.Cast.name;
-    temp = MovieCasts.filter((_el, i) => i !== 0);
+    mainImg = temp[0]?.img;
+    actorName = temp[0]?.name;
+    temp = temp.filter((_el, i) => i !== 0);
   }
   return (
     <MuiModal
@@ -27,7 +25,7 @@ export default function CastModal(props) {
           <div className="flex flex-wrap justify-center items-center">
             <div className="w-[50%] px-4">
               <img
-                src={"https://image.tmdb.org/t/p/w500" + mainImg}
+                src={mainImg}
                 alt={actorName}
                 className="shadow rounded max-w-full h-auto align-middle border-none"
               />
@@ -36,10 +34,8 @@ export default function CastModal(props) {
               {temp?.map((el, i) => (
                 <div className="w-[30%] px-4" key={i}>
                   <img
-                    src={
-                      "https://image.tmdb.org/t/p/w500" + el?.Cast.profilePict
-                    }
-                    alt={el?.Cast.name}
+                    src={el?.img}
+                    alt={el?.name}
                     className="shadow rounded max-w-full h-auto align-middle border-none"
                   />
                 </div>

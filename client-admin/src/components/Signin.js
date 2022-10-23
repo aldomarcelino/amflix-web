@@ -17,7 +17,7 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let response = await fetch(`http://localhost:3000/signin`, {
+      let response = await fetch(`https://amflix-clone.herokuapp.com/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,13 +57,13 @@ function Signin() {
           </div>
           <div className="mb-4">
             <label className="block text-grey-darker text-sm font-bold mb-2">
-              Username
+              Email
             </label>
             <input
               className="shadow appearance-none border rounded w-80 py-2 px-3 text-grey-darker"
               name="email"
               type="text"
-              placeholder="Username"
+              placeholder="aldo@gmail.com"
               value={account.email}
               onChange={handleChange}
             />

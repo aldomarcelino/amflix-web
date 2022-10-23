@@ -10,7 +10,12 @@ export default function Dashboard() {
   const [casts, setCasts] = useState({});
   const [theMovie, setTheMovie] = useState({});
   const handleShowCast = (data) => {
-    setCasts(data);
+    let { MovieCasts, title } = data;
+    let temp = MovieCasts.map((el) => ({
+      name: el.Cast.name,
+      img: el.Cast.profilePict,
+    }));
+    setCasts({ temp, title });
     setOnCast();
   };
   const handleEdit = (data) => {
@@ -26,8 +31,8 @@ export default function Dashboard() {
         theMovie={theMovie}
         setTheMovie={setTheMovie}
       />
-      <div className="w-full xl:w-8/12  px-4 mx-auto ml-96 mt-4 mb-20">
-        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+      <section class="py-1 bg-blueGray-50">
+        <div className="ml-[15%] mr-12 relative flex flex-col min-w-0 break-word mb-6 shadow-lg rounded ">
           <div className="rounded-t mb-0 px-4 py-3 border-0">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -73,7 +78,7 @@ export default function Dashboard() {
             />
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

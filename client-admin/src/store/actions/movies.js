@@ -1,6 +1,6 @@
 import { SUCCESS_GET_MOVIES, SUCCESS_GET_GENRE } from "../action_types/movies";
 import Swal from "sweetalert2";
-const base_url = "http://localhost:3000";
+const base_url = "https://amflix-clone.herokuapp.com";
 
 export function fetchMovies() {
   return async (dispatch) => {
@@ -183,8 +183,7 @@ function confirmAlert() {
     text: "You won't be able to revert this!",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
+    confirmButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
   });
 }

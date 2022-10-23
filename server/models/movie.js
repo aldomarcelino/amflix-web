@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING,
         validate: {
-          notEmpty: true,
-          notNull: true,
+          notEmpty: { msg: "title is required" },
+          notNull: { msg: "title is required" },
         },
       },
       imgUrl: DataTypes.TEXT,
@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.TEXT,
         validate: {
-          notEmpty: true,
-          notNull: true,
+          notEmpty: { msg: "synopsis is required" },
+          notNull: { msg: "synopsis is required" },
         },
       },
       trailerUrl: DataTypes.STRING,
@@ -36,9 +36,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
         validate: {
-          notEmpty: true,
-          notNull: true,
-          min: 1,
+          notEmpty: { msg: "rating is required" },
+          notNull: { msg: "rating is required" },
+          min: {
+            args: 1,
+            msg: "rating minimum 1",
+          },
         },
       },
       popularity: DataTypes.INTEGER,

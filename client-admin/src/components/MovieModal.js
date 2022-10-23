@@ -7,17 +7,15 @@ export default function MovieModal({ open, setOff, setTheMovie, theMovie }) {
   console.log(theMovie);
   const { genre } = useSelector((state) => state.genre);
   const dispatch = useDispatch();
-  const [cast, setCasts] = useState([]);
+  const [cast, setCasts] = useState([{ name: "", profilePict: "" }]);
   const [newGenre, setNewGenre] = useState([]);
   const [newMovie, setNewMovie] = useState({
     title: "",
     synopsis: "",
     trailerUrl: "",
-    rating: "",
-    name: "",
-    profilePict: "",
+    rating: 0,
+    imgUrl: "",
   });
-  console.log(cast);
 
   useEffect(() => {
     if (Object.keys(theMovie).length > 0 && open) {
@@ -28,15 +26,12 @@ export default function MovieModal({ open, setOff, setTheMovie, theMovie }) {
         synopsis: theMovie.synopsis,
         trailerUrl: theMovie.trailerUrl,
         rating: theMovie.rating,
-        name: theMovie.MovieCasts[0].Cast.name,
-        profilePict: theMovie.MovieCasts[0].Cast.profilePict,
+        imgUrl: theMovie.imgUrl,
       });
-      temporary.shift();
       setCasts(temporary);
       setNewGenre(temp);
     }
   }, [theMovie]);
-  console.log(newGenre, "<<<<<<<<");
   const addCast = (e) => {
     e.preventDefault();
     setCasts([...cast, { name: "", profilePict: "" }]);
@@ -63,9 +58,8 @@ export default function MovieModal({ open, setOff, setTheMovie, theMovie }) {
       title: "",
       synopsis: "",
       trailerUrl: "",
-      rating: "",
-      name: "",
-      profilePict: "",
+      rating: 0,
+      imgUrl: "",
     });
     setCasts([]);
     setNewGenre([]);
@@ -75,7 +69,9 @@ export default function MovieModal({ open, setOff, setTheMovie, theMovie }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Object.keys(theMovie).length > 0)
-      dispatch(updateTheMovie({ ...newMovie, cast, genre: newGenre },theMovie.id));
+      dispatch(
+        updateTheMovie({ ...newMovie, cast, genre: newGenre }, theMovie.id)
+      );
     else dispatch(createNewMovie({ ...newMovie, cast, genre: newGenre }));
     setOff();
     handleClose();
@@ -162,27 +158,22 @@ export default function MovieModal({ open, setOff, setTheMovie, theMovie }) {
               onChange={handleChange}
             />
             <label className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
-              Casts
+              Movie Poster
             </label>
             <div className="flex">
               <input
                 type="text"
-                name="name"
+                name="imgUrl"
                 className="mb-2 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                placeholder="Main Cast name"
-                value={newMovie.name}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="profilePict"
-                className="ml-2 mb-2 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
-                placeholder="Main Cast image URL"
-                value={newMovie.profilePict}
+                placeholder="https://en.wikipedia.org/Harry_Potter_character_poster.jpg"
+                value={newMovie.imgUrl}
                 onChange={handleChange}
               />
             </div>
-            {cast.map((el, i) => (
+            <label className="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+              Casts
+            </label>
+            {cast?.map((el, i) => (
               <div className="flex" key={i + "i"}>
                 <input
                   name={"name-" + i}

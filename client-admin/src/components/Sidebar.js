@@ -1,13 +1,24 @@
 import { useNavigate, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Sidebar() {
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.clear();
-    navigate("/signin");
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, log me out!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Logged Out!", "has been log out", "success");
+        localStorage.clear();
+        navigate("/signin");
+      }
+    });
   };
   return (
-    <div className="flex flex-col bg-gray-50 text-gray-800">
+    <div className="flex flex-col bg-gray-50">
       <div className="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
         <div className="flex items-center justify-center h-14 border-b m-1">
           <div className="text-red text-3xl font-bold">AMFLIX</div>
@@ -17,7 +28,7 @@ export default function Sidebar() {
             <li>
               <button
                 onClick={() => navigate("/")}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-800 hover:text-black border-l-4 border-transparent hover:border-red pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg
@@ -37,7 +48,7 @@ export default function Sidebar() {
             </li>
             <li>
               <Link to={"/genre"}>
-                <button className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6">
+                <button className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-800 hover:text-black border-l-4 border-transparent hover:border-red pr-6">
                   <span className="inline-flex justify-center items-center ml-4">
                     <svg
                       className="w-6 h-6"
@@ -61,7 +72,7 @@ export default function Sidebar() {
             <li>
               <button
                 onClick={() => navigate("/registeradmin")}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-800 hover:text-black border-l-4 border-transparent hover:border-red pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4"></span>
                 <svg
@@ -81,7 +92,7 @@ export default function Sidebar() {
             <li>
               <button
                 onClick={handleLogout}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-red pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-800 hover:text-black border-l-4 border-transparent hover:border-red pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg

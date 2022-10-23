@@ -47,7 +47,7 @@ export default function Table(props) {
       <thead>
         <tr>{tHead}</tr>
       </thead>
-      <tbody>{tBody}</tbody>
+      <tbody className="font-medium" >{tBody}</tbody>
     </table>
   );
 }

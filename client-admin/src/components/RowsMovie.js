@@ -4,10 +4,13 @@ import { deleteTheMovie } from "../store/actions/movies";
 export default function RowsMovie(props) {
   const { no, handleShowCast, movie, handleEditMovie } = props;
   const { title, rating, imgUrl, id, MovieCasts, User, GenreMovies } = movie;
+  let imageUrl;
   let dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteTheMovie(id));
   };
+  if (imgUrl[0] === "/") imageUrl = `https://image.tmdb.org/t/p/w500/${imgUrl}`;
+  else imageUrl = imgUrl;
 
   return (
     <tr>
@@ -30,7 +33,7 @@ export default function RowsMovie(props) {
       </td>
       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
         <div className="items-center w-40 rounded">
-          <img src={`https://image.tmdb.org/t/p/w500/${imgUrl}`} alt={title} />
+          <img src={imageUrl} alt={title} />
         </div>
       </td>
       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">

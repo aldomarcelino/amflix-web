@@ -3,7 +3,8 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function Movie(props) {
   const { movie, status } = props;
-  const [like, setLike] = useState(false);
+
+  const [like] = useState(false);
   let imgUrl = movie?.backdrop_path;
   let myClass =
     "w-[160px] sm:w-[200px] md:w-[240px] lg:w-[300px] inline-block cursor-pointer relative p-2";
