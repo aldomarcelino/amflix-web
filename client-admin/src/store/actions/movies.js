@@ -1,6 +1,6 @@
 import { SUCCESS_GET_MOVIES, SUCCESS_GET_GENRE } from "../action_types/movies";
 import Swal from "sweetalert2";
-const base_url = "https://amflix-clone.herokuapp.com";
+const base_url = "http://localhost:3000";
 
 export function fetchMovies() {
   return async (dispatch) => {

@@ -16,7 +16,7 @@ export default function RegisterAdmin() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://amflix-clone.herokuapp.com/signup`,
+        `http://localhost:3000/signup`,
         {
           method: "POST",
           headers: {
