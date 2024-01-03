@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "amflix_db",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
@@ -20,8 +20,8 @@
     "protocol": "postgres",
     "dialectOptions": {
       "ssl": {
-        "require":true,
-        "rejectUnauthorized":false
+        "require": true,
+        "rejectUnauthorized": false
       }
     }
   }
