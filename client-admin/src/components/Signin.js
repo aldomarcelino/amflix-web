@@ -17,13 +17,16 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let response = await fetch(`http://localhost:3000/signin`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(account),
-      });
+      let response = await fetch(
+        `https://clean-gold-bracelet.cyclic.app//signin`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(account),
+        }
+      );
       let data = await response.json();
       if (data.err) throw data.message;
       localStorage.setItem("access_token", data.accessToken);

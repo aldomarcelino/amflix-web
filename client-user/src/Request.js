@@ -1,6 +1,6 @@
 const key = process.env.REACT_APP_TMDBKEY;
 const requests = {
-  myUrl: "http://localhost:3000",
+  myUrl: "https://clean-gold-bracelet.cyclic.app/",
   baseUlr: `https://api.themoviedb.org/3/movie/`,
   requestLatest: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=2`,
   requestPopular: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,

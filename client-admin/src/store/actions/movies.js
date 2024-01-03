@@ -1,6 +1,6 @@
 import { SUCCESS_GET_MOVIES, SUCCESS_GET_GENRE } from "../action_types/movies";
 import Swal from "sweetalert2";
-const base_url = "http://localhost:3000";
+const base_url = "https://clean-gold-bracelet.cyclic.app/";
 
 export function fetchMovies() {
   return async (dispatch) => {
