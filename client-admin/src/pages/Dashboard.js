@@ -4,7 +4,7 @@ import MovieModal from "../components/MovieModal";
 import Table from "../components/Table";
 import { useToggle, useToggleCasts } from "../hooks/useToggle";
 
-export default function Dashboard() {
+export default function Dashboard({ search }) {
   const { open, setOn, setOff } = useToggle();
   const { openCast, setOnCast, setOffCast } = useToggleCasts();
   const [casts, setCasts] = useState({});
@@ -62,6 +62,7 @@ export default function Dashboard() {
           </div>
           <div className="block w-full overflow-x-auto">
             <Table
+              search={search}
               handleShowCast={handleShowCast}
               handleEditMovie={handleEdit}
               status={"dashboard"}

@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import RowsMovie from "./RowsMovie";
 import RowsGenre from "./RowsGenre";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, fetchGenre } from "../store/actions/movies";
+import { useLocation } from "react-router-dom";
 
 export default function Table(props) {
+  const location = useLocation();
   const { status, head, handleEdit, handleShowCast, handleEditMovie } = props;
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.movies);
@@ -12,6 +14,11 @@ export default function Table(props) {
     return state.genre;
   });
   let tBody;
+  const [search, setSearch] = useState(location.search.split("=")[1]);
+
+  useEffect(() => {
+    setSearch(location.search.split("=")[1]);
+  }, [location]);
 
   useEffect(() => {
     dispatch(fetchMovies());
@@ -28,26 +35,34 @@ export default function Table(props) {
   ));
 
   if (status === "dashboard") {
-    tBody = movies.map((e, i) => (
-      <RowsMovie
-        key={e.id}
-        movie={e}
-        no={i}
-        handleShowCast={handleShowCast}
-        handleEditMovie={handleEditMovie}
-      />
-    ));
+    tBody = movies
+      .filter((item) =>
+        !search ? item : item.title.toLowerCase().includes(search)
+      )
+      .map((e, i) => (
+        <RowsMovie
+          key={e.id}
+          movie={e}
+          no={i}
+          handleShowCast={handleShowCast}
+          handleEditMovie={handleEditMovie}
+        />
+      ));
   } else {
-    tBody = genre.map((e, i) => (
-      <RowsGenre key={e.id} genre={e} no={i} handleEdit={handleEdit} />
-    ));
+    tBody = genre
+      .filter((item) =>
+        !search ? item : item.name.toLowerCase().includes(search)
+      )
+      .map((e, i) => (
+        <RowsGenre key={e.id} genre={e} no={i} handleEdit={handleEdit} />
+      ));
   }
   return (
     <table className="items-center bg-transparent w-full border-collapse ">
       <thead>
         <tr>{tHead}</tr>
       </thead>
-      <tbody className="font-medium" >{tBody}</tbody>
+      <tbody className="font-medium">{tBody}</tbody>
     </table>
   );
 }

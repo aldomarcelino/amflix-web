@@ -17,7 +17,7 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let response = await fetch(`https://amflix-clone.herokuapp.com/signin`, {
+      let response = await fetch(`http://localhost:3000/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -15,17 +15,14 @@ export default function RegisterAdmin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `https://amflix-clone.herokuapp.com/signup`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            access_token: localStorage.getItem("access_token"),
-          },
-          body: JSON.stringify(user),
-        }
-      );
+      const response = await fetch(`http://localhost:3000/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.getItem("access_token"),
+        },
+        body: JSON.stringify(user),
+      });
       let data = await response.json();
       if (data.err) throw data.message;
       setUser({

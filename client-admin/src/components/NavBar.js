@@ -1,12 +1,28 @@
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
 export default function NavBar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [search, setSearch] = useState();
+
+  useEffect(() => {
+    setSearch("");
+  }, [location.pathname]);
+
   return (
     <nav className="flex items-center flex-wrap bg-white py-2 lg:px-12 shadow border-solid border-t-2 ">
       <div className="relative mx-auto w-70 text-gray-600 lg:block hidden ml-90">
         <input
+          value={search}
           className=" w-full border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
           type="search"
           name="search"
           placeholder="Search"
+          onChange={(e) => {
+            setSearch(e.target.value);
+            navigate(`?search=${e.target.value}`);
+          }}
         />
         <button type="submit" className="absolute right-0 top-0 mt-3 mr-2">
           <svg
