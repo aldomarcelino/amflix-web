@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/amflix-web/tree/main/client-admin/static/css/main.eda7eb12.css",
+    "main.js": "/amflix-web/tree/main/client-admin/static/js/main.6a262c57.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/amflix-web/tree/main/client-admin/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/amflix-web/tree/main/client-admin/index.html",
+    "main.eda7eb12.css.map": "/amflix-web/tree/main/client-admin/static/css/main.eda7eb12.css.map",
+    "main.6a262c57.js.map": "/amflix-web/tree/main/client-admin/static/js/main.6a262c57.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/amflix-web/tree/main/client-admin/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eda7eb12.css",
+    "static/js/main.6a262c57.js"
+  ]
+}
